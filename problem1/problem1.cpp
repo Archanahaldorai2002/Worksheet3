@@ -1,67 +1,61 @@
-#include <stdio.h>
-
-// Function prototypes
-int findSum(int arr[], int n);
-float findAverage(int arr[], int n);
-int findMax(int arr[], int n);
-int findMin(int arr[], int n);
-
-int main() {
-    int arr[5], n, i;
-
-    printf("Enter number of integers (max 5): ");
-    scanf("%d", &n);
-
-    if(n < 1 || n > 5) {
-        printf("Invalid number! Please enter between 1 and 5.\n");
-        return 0;
-    }
-
-    printf("Enter %d integers:\n", n);
-    for(i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-
-    printf("\nSum = %d", findSum(arr, n));
-    printf("\nAverage = %.2f", findAverage(arr, n));
-    printf("\nMaximum = %d", findMax(arr, n));
-    printf("\nMinimum = %d\n", findMin(arr, n));
-
-    return 0;
-}
+#include <iostream>
+using namespace std;
 
 // Function to find sum
-int findSum(int arr[], int n) {
+int findSum(int a[], int n) {
     int sum = 0;
     for(int i = 0; i < n; i++) {
-        sum += arr[i];
+        sum += a[i];
     }
     return sum;
 }
 
 // Function to find average
-float findAverage(int arr[], int n) {
-    return (float)findSum(arr, n) / n;
+float findAverage(int a[], int n) {
+    return (float)findSum(a, n) / n;
 }
 
 // Function to find maximum
-int findMax(int arr[], int n) {
-    int max = arr[0];
+int findMax(int a[], int n) {
+    int maxVal = a[0];
     for(int i = 1; i < n; i++) {
-        if(arr[i] > max) {
-            max = arr[i];
-        }
+        if(a[i] > maxVal)
+            maxVal = a[i];
     }
-    return max;
+    return maxVal;
 }
 
 // Function to find minimum
-int findMin(int arr[], int n) {
-    int min = arr[0];
+int findMin(int a[], int n) {
+    int minVal = a[0];
     for(int i = 1; i < n; i++) {
-        if(arr[i] < min) {
-            min = arr[i];
-        }
+        if(a[i] < minVal)
+            minVal = a[i];
     }
-    return min;
+    return minVal;
 }
+
+int main() {
+    int n, arr[5];
+
+    cout << "Enter number of integers (max 5): ";
+    cin >> n;
+
+    if(n < 1 || n > 5) {
+        cout << "Invalid number! Please enter between 1 and 5." << endl;
+        return 0;
+    }
+
+    cout << "Enter " << n << " integers: ";
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    cout << "\nSum = " << findSum(arr, n);
+    cout << "\nAverage = " << findAverage(arr, n);
+    cout << "\nMaximum = " << findMax(arr, n);
+    cout << "\nMinimum = " << findMin(arr, n) << endl;
+
+    return 0;
+}
+
